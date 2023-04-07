@@ -28,7 +28,7 @@ const Navbar = ({ transparent = false }) => {
               Account
             </div>
             {showAuthComp && (
-              <div className="absolute bg-slate-200 left-0 lg:right-0">
+              <div className="absolute bg-slate-200 right-0">
                 <div className="p-3 lg:p-5 space-y-4 z-50">
                   <NavLink to={LOGIN}>
                     <div className="bg-green-700 py-2 px-[20px] lg:px-[100px] rounded-full flex items-center justify-center">
