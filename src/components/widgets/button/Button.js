@@ -33,7 +33,7 @@ const Button = ({
           : variant === "full-green"
           ? "text-white bg-green-800"
           : "border border-[#373a36] text-[#373a36] px-[30px]"
-      } ${className}  rounded-full font-bold px-10 text-sm flex justify-center items-center max-h-[39px] gap-3`}
+      } ${className}  rounded-full font-bold px-10 text-sm flex justify-center items-center gap-3`}
       {...rest}
     >
       {children} {icon && <TPButtonIcon />}

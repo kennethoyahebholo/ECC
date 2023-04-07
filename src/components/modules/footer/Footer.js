@@ -19,7 +19,9 @@ const Footer = () => {
             <p className=" text-[18px] text-[#3d3d3d]">
               Sign up to our newsletter and get 10% off your first online order
             </p>
-            <Button variant="full-green">Sign up</Button>
+            <Button variant="full-green" className="max-h-[39px]">
+              Sign up
+            </Button>
           </div>
           <div className="space-y-5">
             <h4 className="text-[18px] md:text-[20px] font-semibold text-[#3d3d3d]">

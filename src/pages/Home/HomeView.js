@@ -13,7 +13,6 @@ const HomeView = () => {
       {/* <Integrations /> */}
       {/* <Save /> */}
       {/* <Process /> */}
-      home
       <OurLatestDeals />
       <PopularCategories />
     </div>

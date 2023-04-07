@@ -7,7 +7,7 @@ const Input = ({ end, size = "md", className = "", ...props }) => {
   const getSize = (size) => {
     switch (size) {
       case "sm":
-        return "px-2 h-10";
+        return "px-2 h-3";
       case "md":
         return "px-4 h-12";
       case "lg":
@@ -20,18 +20,27 @@ const Input = ({ end, size = "md", className = "", ...props }) => {
   if (props.type === "password") {
     return (
       <div
-        className={`${getSize(
-          size
-        )} ${className} flex items-center justify-between text-base bg-white placeholder:text-[#8692A6] border rounded-[6px] focus:border-green-800 `}
+        className={`relative flex items-center justify-between border border-black text-base bg-white placeholder:text-[#8692A6] rounded-[6px] focus:border-green-800  `}
       >
         <input
           {...props}
           type={password ? "password" : "text"}
-          className="w-full h-full bg-red-800"
+          className={`${getSize(size)} ${className} rounded-[6px]`}
         />
-        <div className="cursor-pointer" onClick={() => setPassword(!password)}>
+        <div
+          className=" absolute cursor-pointer right-4"
+          onClick={() => setPassword(!password)}
+        >
           {password ? "Show" : "Hide"}
         </div>
+      </div>
+    );
+  }
+
+  if (props.type === "checkbox") {
+    return (
+      <div className={`${getSize(size)} ${className}`}>
+        <input {...props} />
       </div>
     );
   }
