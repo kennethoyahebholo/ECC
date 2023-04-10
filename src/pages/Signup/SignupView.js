@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { Button, Input, Loader } from "../../components/widgets";
+import { Button, Input, Loader, FormSelect } from "../../components/widgets";
 import { useState } from "react";
 import {
   TPFacebookIcon,
@@ -16,6 +16,28 @@ const SignupView = ({
   formik,
 }) => {
   const [emailError, setEmailError] = useState("");
+  const industriesList = [
+    {
+      value: "",
+      title: "Select Role",
+    },
+    {
+      value: "admin",
+      title: "Admin",
+    },
+    {
+      value: "storeManager",
+      title: "Store Manager",
+    },
+    {
+      value: "staff",
+      title: "Staff",
+    },
+    {
+      value: "customer",
+      title: "Customer",
+    },
+  ];
 
   // Validating User Email Provided On Mouse Leave
   const validateEmail = () => {
@@ -33,7 +55,7 @@ const SignupView = ({
   return (
     <div className="flex w-full justify-center h-full p-[20px] lg:p-[40px] bg-slate-100">
       <div className="gap-10 grid grid-cols-1 w-full lg:max-w-2xl flex-wrap">
-        <div className="bg-white p-8 h-full rounded-md">
+        <div className="bg-transparent md:bg-white p-0 md:p-8 h-full rounded-md">
           <div className="space-y-1">
             <p className="text-lg text-green-700 capitalize">About You</p>
 
@@ -78,22 +100,43 @@ const SignupView = ({
           <form onSubmit={formik.handleSubmit} className="space-y-3 mt-8">
             <div>
               <label htmlFor="fullName" className="block text-lg text-gray-300">
-                Full Name
+                First Name
               </label>
               <Input
                 size="lg"
                 type="text"
-                id="fullName"
-                name="fullName"
-                value={formik.values.fullName}
-                placeholder="Enter your full name"
+                id="firstName"
+                name="firstName"
+                value={formik.values.firstName}
+                placeholder="Enter your first name"
                 onChange={formik.handleChange}
                 onMouseLeave={() => validateEmail()}
                 className="w-full"
               />
-              {formik.touched.fullName && formik.errors.fullName && (
+              {formik.touched.firstName && formik.errors.firstName && (
                 <p className="text-red-900 text-sm ">
-                  {formik.errors.fullName}
+                  {formik.errors.firstName}
+                </p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="lastName" className="block text-lg text-gray-300">
+                Last Name
+              </label>
+              <Input
+                size="lg"
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formik.values.lastName}
+                placeholder="Enter your last name"
+                onChange={formik.handleChange}
+                onMouseLeave={() => validateEmail()}
+                className="w-full"
+              />
+              {formik.touched.lastName && formik.errors.lastName && (
+                <p className="text-red-900 text-sm ">
+                  {formik.errors.lastName}
                 </p>
               )}
             </div>
@@ -119,6 +162,41 @@ const SignupView = ({
                 <p className="text-red-900 text-sm ">{emailError}</p>
               )}
             </div>
+            <div>
+              <label htmlFor="lastName" className="block text-lg text-gray-300">
+                Phone Number
+              </label>
+              <Input
+                size="lg"
+                type="number"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={formik.values.phoneNumber}
+                placeholder="Enter your phone number"
+                onChange={formik.handleChange}
+                onMouseLeave={() => validateEmail()}
+                className="w-full"
+              />
+              {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                <p className="text-red-900 text-sm ">
+                  {formik.errors.phoneNumber}
+                </p>
+              )}
+            </div>
+            <div>
+              <FormSelect
+                required
+                size="lg"
+                id="role"
+                name="role"
+                options={industriesList}
+                label="Role"
+                placeholder="Select Your Role"
+                errors={formik.errors.role}
+                touched={formik.touched.role}
+                onChange={formik.handleChange}
+              />
+            </div>
 
             <div>
               <label htmlFor="password" className="block text-lg text-gray-300">
@@ -131,7 +209,7 @@ const SignupView = ({
                 name="password"
                 placeholder="Enter password"
                 onChange={formik.handleChange}
-                autoComplete="on"
+                autoComplete="off"
                 className="w-full"
               />
               {formik.touched.password && formik.errors.password && (
@@ -139,6 +217,31 @@ const SignupView = ({
                   {formik.errors.password}
                 </p>
               )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-lg text-gray-300"
+              >
+                Confirm Password
+              </label>
+              <Input
+                size="lg"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm password"
+                onChange={formik.handleChange}
+                autoComplete="off"
+                className="w-full"
+              />
+              {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword && (
+                  <p className="text-red-900 text-sm ">
+                    {formik.errors.confirmPassword}
+                  </p>
+                )}
             </div>
             <div>
               <div className="flex items-center space-x-3">

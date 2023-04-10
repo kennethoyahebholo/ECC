@@ -1,9 +1,9 @@
-import env from "../confgs";
+import env from "../configs";
 
 // Auth routes
-export const LOG_OUT = "auth/logout";
-export const LOGIN = "auth/local/signin";
-export const REGISTER = "auth/local/register";
+export const LOG_OUT = "Authentication/logout";
+export const LOGIN = "Authentication/authenticate";
+export const REGISTER = "Authentication/create-user";
 export const LOGIN_SUCCESS_URL = "auth/login/success";
 export const VERIFY_TOKEN = "/auth/verify";
 export const GOOGLE_END_POINT = `${env.API_BASE_URL}/auth/google`;
@@ -11,8 +11,8 @@ export const LINKED_IN_END_POINT = `${env.API_BASE_URL}/auth/linkedin`;
 export const MICROSOFT_END_POINT = `${env.API_BASE_URL}/auth/microsoft`;
 
 export const GET_USER = "/users";
-export const FORGOT_PASSWORD = "users/forgot-password";
-export const RESET_PASSWORD = "users/reset-password";
+export const FORGOT_PASSWORD = "Authentication/forgot-password";
+export const RESET_PASSWORD = "Authentication/reset-password";
 
 export const UPDATE_USER = "/update_user";
 export const DELETE_USER = "/delete_user";
@@ -46,6 +46,8 @@ export const UPLOAD_IMAGE = "/upload/images";
 /*
 Contact
 */
+
+export const ECC_USER_DATA = "ECC_USER_DATA";
 
 export const TECHNICAL_SUPPORT = "/technical-support";
 

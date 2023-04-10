@@ -32,8 +32,8 @@ const LoginView = ({
 
   return (
     <div className="flex w-full justify-center h-full p-[20px] lg:p-[40px] bg-slate-100">
-      <div className="gap-10 grid grid-cols-1 lg:grid-cols-2 w-full lg:max-w-5xl flex-wrap">
-        <div className="bg-white p-8 h-full rounded-md">
+      <div className="gap-10 grid grid-cols-1 md:grid-cols-2 w-full lg:max-w-5xl flex-wrap">
+        <div className="bg-transparent md:bg-white p-0 md:p-8 h-full rounded-md">
           <div className="space-y-1">
             <p className="text-lg text-green-700 capitalize">
               Existing customers
@@ -87,8 +87,8 @@ const LoginView = ({
               )}
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex">
+            <div className="flex items-center justify-end">
+              {/* <div className="flex">
                 <Input
                   size="sm"
                   id="remember"
@@ -99,12 +99,15 @@ const LoginView = ({
                 />
                 <label
                   htmlFor="remember"
-                  className="capitalize text-lg text-green-600"
+                  className="capitalize text-sm md:text-lg text-green-600"
                 >
                   Remember me
                 </label>
-              </div>
-              <Link to="" className="text-lg text-green-600 hover:text-green">
+              </div> */}
+              <Link
+                to=""
+                className="text-sm md:text-lg text-green-600 hover:text-green"
+              >
                 Forgot password?
               </Link>
             </div>

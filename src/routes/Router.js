@@ -5,7 +5,7 @@ import {
   // BroadcastChannel,
   // Calender,
   // Contact,
-  // DashboardHome,
+  DashboardHome,
   // ForgetPassword,
   Home,
   // Pricing,
@@ -21,25 +21,25 @@ import {
   // SignupIndividual
 } from "../pages";
 import {
-//   BROADCASTCHANNEL,
-//   CALENDER,
-//   CONTACT,
-//   ABOUT,
-//   DASHBOARD,
-//   FORGOT_PASSWORD,
+  //   BROADCASTCHANNEL,
+  //   CALENDER,
+  //   CONTACT,
+  //   ABOUT,
+  DASHBOARD,
+  //   FORGOT_PASSWORD,
   HOME,
   LOGIN,
-//   LOGIN_CONFIRM,
-//   REFER_A_FRIEND,
-//   RESET_PASSWORD,
-//   SETTINGS,
+  //   LOGIN_CONFIRM,
+  //   REFER_A_FRIEND,
+  //   RESET_PASSWORD,
+  //   SETTINGS,
   SIGNUP,
-//   TERMS,
-//   PRIVACY,
-//   PRICING,
-//   SIGNUP_INDIVIDUAL,
-//   SIGNUP_BUSINESS,
-//   SIGNUP_INVITE
+  //   TERMS,
+  //   PRIVACY,
+  //   PRICING,
+  //   SIGNUP_INDIVIDUAL,
+  //   SIGNUP_BUSINESS,
+  //   SIGNUP_INVITE
 } from "./CONSTANTS";
 
 import { ProtectedRoute, PublicRoute } from "../components/guards";
@@ -65,6 +65,7 @@ const RouterConfig = () => {
           {/* <Route path={RESET_PASSWORD} element={<ResetPassword />} /> */}
           {/* <Route path={FORGOT_PASSWORD} element={<ForgetPassword />} /> */}
           {/* <Route path={SIGNUP_INVITE} element={<SignupIndividual />} /> */}
+          <Route path={DASHBOARD} element={<DashboardHome />}></Route>
         </Route>
         {/* dashboard routes should be placed in here */}
         <Route>
@@ -76,7 +77,7 @@ const RouterConfig = () => {
         </Route>
 
         {/* <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}> */}
-          {/* Protected routes should be placed in here */}
+        {/* Protected routes should be placed in here */}
         {/* </Route> */}
 
         {/* 404 page */}

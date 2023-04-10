@@ -14,7 +14,7 @@ export { default as Home } from "./Home";
 // export { default as ForgetPassword } from "./ForgetPassword";
 
 // dashboad
-// export { default as DashboardHome } from "./DashboardHome";
+export { default as DashboardHome } from "./DashboardHome";
 // export { default as Calender } from "./Calender";
 // export { default as BroadcastChannel } from "./BroadcastChannel";
 // export { default as ReferAFriend } from "./ReferAFriend";

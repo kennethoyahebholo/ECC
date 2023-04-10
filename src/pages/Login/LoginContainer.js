@@ -16,12 +16,15 @@ import { Auth } from "../../components/layouts";
 // import { GOOGLE_END_POINT, LINKED_IN_END_POINT, MICROSOFT_END_POINT } from "services/CONSTANTS";
 
 import LoginView from "./LoginView";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../redux/slices/auth.slice";
+import { DASHBOARD, HOME } from "../../routes/CONSTANTS";
+import { useQuery } from "../../hooks";
+import { toast } from "react-toastify";
 
 export const LoginContainer = () => {
   //   const { confirmationCode } = useParams();
-  //   const query = useQuery();
-  //   const navigate = useNavigate();
-  //   const dispatch = useAppDispatch();
   //   const { isLoading } = useAppSelector((state) => state.auth);
 
   //   useEffect(() => {
@@ -39,6 +42,9 @@ export const LoginContainer = () => {
   //       }
   //     }
   //   }, []);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const query = useQuery();
 
   const formik = useFormik({
     initialValues: {
@@ -60,22 +66,24 @@ export const LoginContainer = () => {
     }),
     onSubmit: (details) => {
       console.log(details);
-      //   dispatch(login(details))
-      //     .unwrap()
-      //     .then(() => {
-      //       const redirect = query.get("redirect");
-      //       if (redirect) {
-      //         //  redirect to absolute URL - possibly initiated from VC app
-      //         if (redirect.startsWith("http")) {
-      //           return window.location.replace(redirect);
-      //         }
-      //         navigate(`../${redirect}`, { replace: true });
-      //       } else {
-      //         navigate(HOME);
-      //         window.location.reload();
-      //       }
-      //     })
-      // .catch((err) => console.log(err));
+      void dispatch(login(details))
+        .unwrap()
+        .then((resp) => {
+          console.log("hiiiii", resp);
+          const redirect = query.get("redirect");
+          if (redirect) {
+            //  redirect to absolute URL - possibly initiated from VC app
+            if (redirect.startsWith("http")) {
+              return window.location.replace(redirect);
+            }
+            navigate(`../${redirect}`, { replace: true });
+          } else if (resp?.status === 200) {
+            toast.success("login successfully, navigating to dashboard");
+            navigate(DASHBOARD);
+            window.location.reload();
+          }
+        })
+        .catch((err) => console.log(err));
     },
   });
 

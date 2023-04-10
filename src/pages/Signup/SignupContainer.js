@@ -7,51 +7,80 @@ import {
   LINKED_IN_END_POINT,
   MICROSOFT_END_POINT,
 } from "../../services/CONSTANTS";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { register } from "../../redux/slices/auth.slice";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { LOGIN } from "../../routes/CONSTANTS";
 
 export const SignupContainer = () => {
   const { refId } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
+      phoneNumber: "",
+      role: "",
       password: "",
+      confirmPassword: "",
       refId: refId ?? "",
       terms: false,
     },
     validationSchema: Yup.object().shape({
-      fullName: Yup.string().required("Full Name is required"),
+      firstName: Yup.string().required("First Name is required"),
+      lastName: Yup.string().required("Last Name is required"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
+      phoneNumber: Yup.string()
+        .matches(
+          /^(\+?\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+          "Invalid phone number"
+        )
+        .required("Phone number is required"),
+      role: Yup.string().required("Role is required"),
       password: Yup.string()
+        .min(6, "Password must be at least 6 characters")
+        .max(15, "Password must be at most 15 characters")
         .required("Password is required")
         .matches(
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
           "Weak Password. Password must have at least: 1 upper case, 1 digit, 1 special character, Minimum eight in length"
         ),
-      refId: Yup.string(),
-      terms: Yup.boolean().isTrue("Terms and condition not accepted"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Passwords must match")
+        .required("Confirm password is required"),
+      terms: Yup.boolean().oneOf(
+        [true],
+        "You must accept the terms and conditions."
+      ),
     }),
     onSubmit: (details) => {
       console.log(details);
-      // void dispatch(
-      //   register({
-      //     email: details.email,
-      //     password: details.password,
-      //     firstName: details.fullname.split(" ")[0],
-      //     lastName: details.fullname.split(" ")[1],
-      //     refId: details.refId ? details.refId : undefined,
-      //   })
-      // )
-      //   .unwrap()
-      //   .then((res) => {
-      //     setTimeout(() => {
-      //       toast.success(
-      //         `Verification Link has been sent to this email "${res.email}", kindly follow the instruction in the mail to verify your account`
-      //       );
-      //     }, 5000);
-      //   });
+      // toast.success(
+      //   `Verification Link has been sent to this email, kindly follow the instruction in the mail to verify your account`
+      // );
+
+      void dispatch(
+        register({
+          firstName: details.firstName,
+          lastName: details.lastName,
+          email: details.email,
+          password: details.password,
+          confirmPassword: details.confirmPassword,
+          phoneNumber: details.phoneNumber.toString(),
+          userRole: details.role,
+        })
+      )
+        .unwrap()
+        .then((res) => {
+          if (res) {
+            navigate(LOGIN);
+          }
+        });
     },
   });
 

@@ -3,7 +3,9 @@ const IMG_PATH = "/img";
 const USERS = `${IMG_PATH}/users`;
 const BACKGROUND = `${IMG_PATH}/backgrounds`;
 const ICONS = `${IMG_PATH}/icons`;
+const SVG_PATH = "/svg";
 
+export const user = `${USERS}/user.png`;
 export const user1 = `${USERS}/user1.png`;
 export const user2 = `${USERS}/user2.png`;
 export const user3 = `${USERS}/user3.png`;
@@ -57,6 +59,8 @@ export const shop4 = `${BACKGROUND}/shop4.jpg`;
 export const shop5 = `${BACKGROUND}/shop5.jpg`;
 export const shop6 = `${BACKGROUND}/shop6.jpg`;
 
+export const bell = `${SVG_PATH}/bell.svg`;
+export const search = `${SVG_PATH}/search.svg`;
 export const menuIcon = `${ICONS}/menu.svg`;
 export const volumeUpIcon = `${ICONS}/volume_up.svg`;
 export const autoPlay = `${ICONS}/autoplay.svg`;
