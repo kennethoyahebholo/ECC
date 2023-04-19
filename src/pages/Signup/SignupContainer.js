@@ -2,15 +2,9 @@ import { Auth } from "../../components/layouts";
 import { useFormik } from "formik";
 import SignupView from "./SignupView";
 import * as Yup from "yup";
-import {
-  GOOGLE_END_POINT,
-  LINKED_IN_END_POINT,
-  MICROSOFT_END_POINT,
-} from "../../services/CONSTANTS";
 import { useNavigate, useParams } from "react-router-dom";
 import { register } from "../../redux/slices/auth.slice";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LOGIN } from "../../routes/CONSTANTS";
 
 export const SignupContainer = () => {
@@ -60,9 +54,6 @@ export const SignupContainer = () => {
     }),
     onSubmit: (details) => {
       console.log(details);
-      // toast.success(
-      //   `Verification Link has been sent to this email, kindly follow the instruction in the mail to verify your account`
-      // );
 
       void dispatch(
         register({
@@ -72,7 +63,7 @@ export const SignupContainer = () => {
           password: details.password,
           confirmPassword: details.confirmPassword,
           phoneNumber: details.phoneNumber.toString(),
-          userRole: details.role,
+          UserRole: details.role,
         })
       )
         .unwrap()
@@ -84,25 +75,9 @@ export const SignupContainer = () => {
     },
   });
 
-  const googleLogin = () => {
-    window.open(`${GOOGLE_END_POINT}?refId=${refId}`, "_self");
-  };
-  const microsoftLogin = () => {
-    window.open(`${MICROSOFT_END_POINT}?refId = ${refId}`, "_self");
-  };
-  const linkedLogin = () => {
-    window.open(`${LINKED_IN_END_POINT}?refId=${refId}`, "_self");
-  };
-
   return (
     <Auth reverse>
-      <SignupView
-        formik={formik}
-        loading={() => {}}
-        googleLogin={googleLogin}
-        microsoftLogin={microsoftLogin}
-        linkedLogin={linkedLogin}
-      />
+      <SignupView formik={formik} loading={() => {}} />
     </Auth>
   );
 };

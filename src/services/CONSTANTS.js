@@ -4,52 +4,51 @@ import env from "../configs";
 export const LOG_OUT = "Authentication/logout";
 export const LOGIN = "Authentication/authenticate";
 export const REGISTER = "Authentication/create-user";
-export const LOGIN_SUCCESS_URL = "auth/login/success";
+export const LOGIN_SUCCESS_URL = "Authentication/success";
 export const VERIFY_TOKEN = "/auth/verify";
 export const GOOGLE_END_POINT = `${env.API_BASE_URL}/auth/google`;
 export const LINKED_IN_END_POINT = `${env.API_BASE_URL}/auth/linkedin`;
 export const MICROSOFT_END_POINT = `${env.API_BASE_URL}/auth/microsoft`;
 
-export const GET_USER = "/users";
 export const FORGOT_PASSWORD = "Authentication/forgot-password";
 export const RESET_PASSWORD = "Authentication/reset-password";
 
-export const UPDATE_USER = "/update_user";
-export const DELETE_USER = "/delete_user";
+//Products
+export const GET_PRODUCTS = "/Product/get-products";
+export const ADD_PRODUCT = "/Product/add-product";
+export const UPDATE_PRODUCT = "/Product/update-product";
+export const DELETE_PRODUCT = "/Product/delete-product";
 
-export const GOOGLE_LOGIN = "/google/signup";
-export const GOOGLE_CALLBACK = "/google/callback";
-export const LINKED_LOGIN = "/linkedin/signup";
-export const MICROSOFT_LOGIN = "/microsoft/signup";
-export const MICROSOFT_CALLBACK = "/microsoft/callback";
-export const FACEBOOK_CALLBACK = "/auth/facebook/callback ";
+//Stocks
+export const GET_STOCKS = "/Stock/get-stock";
+export const ADD_STOCK = "/Stock/add-stock";
+export const UPDATE_STOCK = "/Stock/update-stock";
+export const DELETE_STOCK = "/Stock/delete-stock";
 
-/**
- * Settings
- */
+//Sale-Offer
+export const GET_SALE_OFFER = "/SaleOffer/get-saleOffer";
+export const ADD_SALE_OFFER = "/SaleOffer/add-saleOffer";
+export const UPDATE_SALE_OFFER = "/SaleOffer/update-saleOffer";
+export const DELETE_SALE_OFFER = "/SaleOffer/delete-saleOffer";
 
-export const UPDATE_USER_PROFILE = "/user";
-export const UPLOAD_FILE = "/upload/profile-photo/";
+//Administrator
+export const CREATE_ROLE = "/Administrator/create-roles";
+export const GET_ROLE = "/Administrator/get-all-role";
+export const EDIT_ROLE = "/Administrator/edit-role";
+export const DELETE_ROLE = "/Administrator/delete-role";
 
-export const PUBLIC_REQUEST_KEY = "public-request";
+export const GET_USER = "/Administrator/get-all-users";
+export const GET_USER_FILTER_VIEW = "/Administrator/get-user-filter-view";
+export const EDIT_USER = "/Administrator/edit-user";
+export const DELETE_USER = "/Administrator/delete-user";
 
-/**
- * Meetings
- */
-
-export const CREATE_NEW_MEETING = "/meetings/new-meeting";
-
-/**
- * Upload Image
- */
-export const UPLOAD_IMAGE = "/upload/images";
-/*
-Contact
-*/
+//StaffShift
+export const GET_STAFF_SHIFT = "/StaffShift/get-staffShift";
+export const ADD_STAFF_SHIFT = "/StaffShift/add-staffShift";
+export const UPDATE_STAFF_SHIFT = "/StaffShift/update-staffShift";
+export const DELETE_STAFF_SHIFT = "/StaffShift/delete-staffShift";
 
 export const ECC_USER_DATA = "ECC_USER_DATA";
-
-export const TECHNICAL_SUPPORT = "/technical-support";
 
 // Request Status
 

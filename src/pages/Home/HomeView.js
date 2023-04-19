@@ -1,4 +1,3 @@
-// import { AcheiveMore, Create, Hero, Integrations, Process, Save, Testimonial } from "components";
 import {
   PopularCategories,
   OurLatestDeals,
@@ -9,10 +8,6 @@ const HomeView = () => {
   return (
     <div className="overflow-hidden">
       <HeroSliderComp />
-      {/* <AcheiveMore /> */}
-      {/* <Integrations /> */}
-      {/* <Save /> */}
-      {/* <Process /> */}
       <OurLatestDeals />
       <PopularCategories />
     </div>

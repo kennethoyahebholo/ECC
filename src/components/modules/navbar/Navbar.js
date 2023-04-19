@@ -64,7 +64,7 @@ const Navbar = ({ transparent = false }) => {
         className="relative w-full py-5 px-5 md:px-10 xl:px-20 flex items-center
         justify-between"
       >
-        <NavLink to={HOME}>YOURLOGO</NavLink>
+        <NavLink to={HOME}>AUTO Supermarket</NavLink>
         <div className="hidden lg:inline-flex items-center space-x-3 text-slate-700">
           <Input size="md" placeholder="Search for a product or brand..." />
         </div>

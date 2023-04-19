@@ -1,47 +1,71 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "../../../redux/slices/auth.slice";
 
-// import { LogoutModal } from "components/modules/modals";
-// import { ZuBroadcast, ZuCalender, ZuHome, ZuLogout, ZuSettings, ZuShare } from "components/icons";
 import {
-  BROADCASTCHANNEL,
-  CALENDER,
   DASHBOARD,
-  REFER_A_FRIEND,
+  STAFFSHIFT,
+  ADMINISTRATOR,
   SETTINGS,
+  PRODUCTS,
+  STAFFOFFER,
+  STOCKS,
+  HOME,
+  SALEOFFER,
 } from "../../../routes/CONSTANTS";
+// import ZuHome from "../../icons/ZuHome";
+import { EcHome, EcLogout, EcSettings } from "../../icons";
+// import SvgZuSettings from "../../icons/ZuSettings";
+// import { LOGIN } from "../../../services/CONSTANTS";
+import AlertModal from "../../modules/modals/AlertModal";
 
 const sidebar = [
   {
-    Icon: "",
+    Icon: EcHome,
     name: "Home",
     to: DASHBOARD,
   },
   {
-    Icon: "",
-    name: "Calender",
-    to: CALENDER,
+    Icon: EcSettings,
+    name: "Administrator",
+    to: ADMINISTRATOR,
   },
   {
-    Icon: "",
-    name: "Broadcast Channel",
-    to: BROADCASTCHANNEL,
+    Icon: EcSettings,
+    name: "Products",
+    to: PRODUCTS,
   },
   {
-    Icon: "",
-    name: "Refer a Friend",
-    to: REFER_A_FRIEND,
+    Icon: EcSettings,
+    name: "Stocks",
+    to: STOCKS,
   },
   {
-    Icon: "",
-    name: "Settings",
-    to: SETTINGS,
+    Icon: EcSettings,
+    name: "Sale Offer",
+    to: SALEOFFER,
+  },
+  {
+    Icon: EcSettings,
+    name: "Staff Shift",
+    to: STAFFSHIFT,
   },
 ];
 
 const Sidebar = () => {
   const { pathname } = useLocation();
   const [logoutModal, setLogoutModal] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onLogoutSubmit = () => {
+    void dispatch(logout())
+      .unwrap()
+      .then(() => navigate(HOME))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="md:w-1/3 lg:w-1/4 xl:w-1/5 h-full pt-5 md:pt-8 px-3 md:pl-5 md:pr-2 flex flex-col gap-2 bg-slate-100">
       {sidebar.map(({ Icon, name, to }, key) => (
@@ -54,7 +78,9 @@ const Sidebar = () => {
               : "text-gray-500 p-2 flex items-center gap-4"
           } flex items-center`}
         >
-          <div className="w-5">{/* <Icon size={20} /> */}</div>
+          <div className="w-5">
+            <Icon size={20} />
+          </div>
           <div className="w-full hidden md:block">
             <span className="text-md">{name}</span>
           </div>
@@ -65,13 +91,21 @@ const Sidebar = () => {
         className="text-gray-200 p-5 flex items-center gap-4 cursor-pointer"
       >
         <div className="w-5">
-          {/* <ZuLogout size={20} className="text-red" /> */}
+          <EcLogout size={20} className="text-red-600" />
         </div>
         <div className="w-full hidden md:block">
-          <span className="text-lg text-red">Logout</span>
+          <span className="text-lg text-red-600">Logout</span>
         </div>
       </div>
-      {/* {logoutModal && <LogoutModal setOpenModal={setLogoutModal} />} */}
+      {logoutModal && (
+        <AlertModal
+          title={`Logout?`}
+          subTitle={`Are you sure you want to Logout?`}
+          action={`Logout`}
+          handleAction={onLogoutSubmit}
+          setOpenModal={setLogoutModal}
+        />
+      )}
     </div>
   );
 };

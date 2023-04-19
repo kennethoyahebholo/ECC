@@ -7,19 +7,42 @@ import authHeader from "./auth-header";
 import {
   FORGOT_PASSWORD,
   LOGIN,
-  //   LOGIN_SUCCESS_URL,
   LOG_OUT,
   REGISTER,
   RESET_PASSWORD,
   ECC_USER_DATA,
+  LOGIN_SUCCESS_URL,
 } from "./CONSTANTS";
 
+// export const login = async (credentials: LoginType) => {
+// 	try {
+// 		const { data } = await usecoinsApi.post(AUTH_ENDPOINTS.LOGIN, credentials);
+// 		return data;
+// 	} catch (error: any) {
+// 		const { data } = error.response;
+// 		throw new Error(data?.message || 'fatal error');
+// 	}
+// };
+
 export const Signin = async ({ email, password }) => {
+  // const headers = {
+  //   Accept: "application/json",
+  //   "Content-Type": "application/json",
+  //   "Access-Control-Allow-Credentials": true,
+  // };
+  // const configs = {
+  //   headers,
+  //   withCredentials: true,
+  // };
   return await axios
-    .post(`${env.API_BASE_URL}/${LOGIN}`, {
-      email,
-      password,
-    })
+    .post(
+      `${env.API_BASE_URL}/${LOGIN}`,
+      {
+        email,
+        password,
+      }
+      // configs
+    )
     .then((res) => {
       const data = res.data;
       if (data) {
@@ -29,7 +52,7 @@ export const Signin = async ({ email, password }) => {
     });
 };
 
-// export const loginSuccess = async () => {
+// export const signinSuccess = async () => {
 //   try {
 //     const config = {
 //       url: `${env.API_BASE_URL}/${LOGIN_SUCCESS_URL}`,
@@ -64,24 +87,11 @@ export const Register = async (details) => {
   }
 };
 
-// export const registerBusiness = async (details) => {
-//   const response = await axios.post(
-//     `${env.API_BASE_URL}/${REGISTER}?type=business`,
-//     details
-//   );
-//   return response.data;
-// };
-
-// export const confirmAccount = async (confirmationCode) => {
-//   const response = await axios.get(
-//     env.API_BASE_URL + `/auth/confirm/${confirmationCode}`
-//   );
-//   return response.data;
-// };
-
 export const Logout = async () => {
   return await axios
-    .get(`${env.API_BASE_URL}/${LOG_OUT}`, { headers: authHeader() })
+    .get(`${env.API_BASE_URL}/${LOG_OUT}`, {
+      headers: authHeader(),
+    })
     .finally(() => {
       localStorage.removeItem(ECC_USER_DATA);
       window.location.reload();
@@ -96,18 +106,18 @@ export const ForgotPassword = async (details) => {
   return response.data;
 };
 
-export const ResetPassword = async (details) => {
-  const response = await axios.patch(
-    `${env.API_BASE_URL}/${RESET_PASSWORD}`,
-    details
-  );
-  return response.data;
-};
+// export const ResetPassword = async (details) => {
+//   const response = await axios.patch(
+//     `${env.API_BASE_URL}/${RESET_PASSWORD}`,
+//     details
+//   );
+//   return response.data;
+// };
 
-export const ChangePassword = async (details) => {
-  const response = await axios.patch(
-    `${env.API_BASE_URL}/${CHANGE_PASSWORD}`,
-    details
-  );
-  return response.data;
-};
+// export const ChangePassword = async (details) => {
+//   const response = await axios.patch(
+//     `${env.API_BASE_URL}/${CHANGE_PASSWORD}`,
+//     details
+//   );
+//   return response.data;
+// };

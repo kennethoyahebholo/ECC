@@ -1,17 +1,6 @@
 export const HOME = "/";
-// export const CONTACT = "/contact";
-// export const ABOUT = "/about";
-// export const PRIVACY = "/privacy";
-// export const TERMS = "/terms_and_cond";
-
-// export const PRICING = "/pricing";
 export const LOGIN = "/auth/login";
-// export const LOGIN_CONFIRM = "/auth/login/:confirmationCode";
 export const SIGNUP = "/auth/register";
-// export const SIGNUP_INDIVIDUAL = "/auth/register/individual";
-// export const SIGNUP_BUSINESS = "/auth/register/business";
-// export const FORGOT_PASSWORD = "/auth/forgot-password";
-// export const RESET_PASSWORD = "/token/:token";
 export const CHANGE_PASSWORD = "/auth/change-password";
 
 export const DASHBOARD = "/dashboard";
@@ -20,3 +9,9 @@ export const CALENDER = "/dashboard/calender";
 export const REFER_A_FRIEND = "/dashboard/invites";
 export const SIGNUP_INVITE = `${REFER_A_FRIEND}/:refId`;
 export const SETTINGS = "/dashboard/settings";
+export const PRODUCTS = "/dashboard/products";
+export const STOCKS = "/dashboard/stocks";
+export const SALEOFFER = "/dashboard/sale-offer";
+export const ALLPRODUCTS = "/dashboard/products/all-products";
+export const ADMINISTRATOR = "/dashboard/administrator";
+export const STAFFSHIFT = "/dashboard/staff-shift";

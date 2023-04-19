@@ -1,11 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button, Input, Loader, FormSelect } from "../../components/widgets";
 import { useState } from "react";
-import {
-  TPFacebookIcon,
-  TPTwitterIcon,
-  TPInstagramIcon,
-} from "../../components/icons";
 import { LOGIN } from "../../routes/CONSTANTS";
 
 const SignupView = ({
@@ -26,7 +21,7 @@ const SignupView = ({
       title: "Admin",
     },
     {
-      value: "storeManager",
+      value: "store-manager",
       title: "Store Manager",
     },
     {
@@ -59,35 +54,6 @@ const SignupView = ({
           <div className="space-y-1">
             <p className="text-lg text-green-700 capitalize">About You</p>
 
-            <div className="space-y-1 py-4">
-              <h6 className="text-lg capitalize">
-                Signup with social Accounts
-              </h6>
-
-              <div className="w-full flex items-center justify-start space-x-5">
-                <button
-                  onClick={googleLogin}
-                  className="w-12 h-12 flex items-center justify-center rounded-md shadow-lg bg-white"
-                >
-                  {/* <img src="" className="w-6 h-6" alt="linkedin" /> */}
-                  <TPFacebookIcon />
-                </button>
-                <button
-                  onClick={microsoftLogin}
-                  className="w-12 h-12 flex items-center justify-center rounded-md shadow-lg bg-white"
-                >
-                  {/* <img src="" className="w-6 h-6" alt="linkedin" /> */}
-                  <TPTwitterIcon />
-                </button>
-                <button
-                  onClick={linkedLogin}
-                  className="w-12 h-12 flex items-center justify-center rounded-md shadow-lg bg-white"
-                >
-                  {/* <img src="" className="w-6 h-6" alt="linkedin" /> */}
-                  <TPInstagramIcon />
-                </button>
-              </div>
-            </div>
             <div className="my-2 w-full flex items-center">
               <div className="w-full h-px bg-gray-300 shadow" />
               <p className="px-5 text-base text-gray-300">Or</p>

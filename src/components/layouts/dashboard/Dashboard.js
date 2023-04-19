@@ -7,7 +7,6 @@ const Dashboard = ({ children }) => {
       <Header />
 
       <div className="w-full flex h-[90vh]">
-        {/* Sidebar */}
         <Sidebar />
 
         {/* Content */}

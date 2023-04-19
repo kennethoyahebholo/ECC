@@ -31,7 +31,7 @@ const Button = ({
         variant === "full"
           ? "bg-white text-[#004DB3]"
           : variant === "full-green"
-          ? "text-white bg-green-800"
+          ? "text-white bg-green-800 px-[30px]"
           : "border border-[#373a36] text-[#373a36] px-[30px]"
       } ${className}  rounded-full font-bold px-10 text-sm flex justify-center items-center gap-3`}
       {...rest}

@@ -1,9 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
-import { Register, Signin, ForgotPassword, Logout } from "../../services";
+import {
+  Register,
+  Signin,
+  ForgotPassword,
+  Logout,
+  // signinSuccess,
+} from "../../services";
 import { formatErrorResponse } from "../../utils/formatErrorResponse";
 import { ECC_USER_DATA } from "../../services/CONSTANTS";
+// import axios from "axios";
+// import { env } from "../../configs/environment.config";
 
 const user = JSON.parse(localStorage.getItem(ECC_USER_DATA));
 
@@ -15,7 +23,7 @@ export const register = createAsyncThunk(
       lastName,
       email,
       phoneNumber,
-      role,
+      UserRole,
       password,
       confirmPassword,
     },
@@ -28,7 +36,7 @@ export const register = createAsyncThunk(
         email,
         phoneNumber,
         confirmPassword,
-        role,
+        UserRole,
         password,
       });
       toast.success(resp.userResult);
@@ -74,7 +82,6 @@ export const login = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const resp = await Signin({ email, password });
-      console.log(resp, "slice");
       // return { userId: DATA.id, email: DATA.email };
       return resp;
     } catch (error) {
@@ -84,6 +91,21 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+// export const loginSuccess = createAsyncThunk(
+//   "auth/loginSuccess",
+//   async (_, thunkAPI) => {
+//     try {
+//       const { DATA } = await signinSuccess();
+//       console.log(DATA);
+//       return { user: DATA };
+//     } catch (error) {
+//       const message = formatErrorResponse(error);
+//       toast.error(message);
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
 
 // export const loginSuccess = createAsyncThunk(
 //   "auth/loginSuccess",
@@ -228,17 +250,17 @@ const authSlice = createSlice({
     //   state.isLoading = false;
     // });
     // forgot password actions
-    builder.addCase(forgotPassword.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(forgotPassword.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.passwordReset = true;
-      state.user = action.payload;
-    });
-    builder.addCase(forgotPassword.rejected, (state) => {
-      state.isLoading = false;
-    });
+    // builder.addCase(forgotPassword.pending, (state) => {
+    //   state.isLoading = true;
+    // });
+    // builder.addCase(forgotPassword.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.passwordReset = true;
+    //   state.user = action.payload;
+    // });
+    // builder.addCase(forgotPassword.rejected, (state) => {
+    //   state.isLoading = false;
+    // });
     // forgot password actions
     // builder.addCase(resetPassword.pending, (state) => {
     //   state.isLoading = true;

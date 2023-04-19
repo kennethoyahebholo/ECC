@@ -10,6 +10,8 @@ import {
 } from "../../../components/icons";
 import { Button } from "../../widgets";
 
+import { SIGNUP } from "../../../routes/CONSTANTS";
+
 const Footer = () => {
   return (
     <div className="w-full px-3 md:px-10 xl:px-20  pt-10 md:pt-6 pb-1 md:pb-1 flex justify-between bg-[#f1f1f1]">
@@ -19,9 +21,11 @@ const Footer = () => {
             <p className=" text-[18px] text-[#3d3d3d]">
               Sign up to our newsletter and get 10% off your first online order
             </p>
-            <Button variant="full-green" className="max-h-[39px]">
-              Sign up
-            </Button>
+            <Link to={SIGNUP}>
+              <Button variant="full-green" className="max-h-[39px]">
+                Sign up
+              </Button>
+            </Link>
           </div>
           <div className="space-y-5">
             <h4 className="text-[18px] md:text-[20px] font-semibold text-[#3d3d3d]">

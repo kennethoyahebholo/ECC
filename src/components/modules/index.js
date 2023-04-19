@@ -1,10 +1,4 @@
-export * from "./header";
 export * from "./footer";
 export * from "./navbar";
 export * from "./ProductComp";
-// export * from "./sidebar";
-// export * from "./forms";
-// export * from "./modals";
-// export * from "./drawer";
-// export * from "./dropzone";
-// export * from "./sendinvite";
+export * from "./pagination";

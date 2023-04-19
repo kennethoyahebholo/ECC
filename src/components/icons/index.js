@@ -11,3 +11,6 @@ export { default as TPStripeLogo } from "./TPStripeLogo";
 // export { default as TPDropboxLogo } from "./TPDropboxLogo";
 export { default as TPAddIcon } from "./TPAddIcon";
 export { default as TPMinusIcon } from "./TPMinusIcon";
+export { default as EcHome } from "./EcHome";
+export { default as EcSettings } from "./EcSettings";
+export { default as EcLogout } from "./EcLogout";
